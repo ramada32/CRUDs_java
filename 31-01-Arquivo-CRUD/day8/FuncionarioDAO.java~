@@ -1,0 +1,80 @@
+public class FuncionarioDAO implements IFuncionarioDAO {
+	
+
+   private final String DATABASE = "./DB.TXT";
+   private BufferedWriter writer = null;// grava
+   private BufferedReader reader = null;//le arquivo
+	
+	@Override
+	public Funcionario(){
+		
+	}
+	
+	@Override
+	 public int insere(Funcionario f){
+	 	 
+	 	 String filename = "./tmp.txt";
+    BufferedWriter writer = null;
+    try {
+      writer = new BufferedWriter(new FileWriter(filename));
+      Scanner n1 = new Scanner(System.in);
+ 
+        String line = f.getNome() +"/t"+f.getId();
+        writer.write(line);
+        writer.newLine();
+        writer.flush();
+      
+    } catch(Exception ex) {
+      ex.printStackTrace();
+    } finally {
+      if(writer != null) {
+        try {
+          writer.close();
+        } catch(Exception ex) {
+        }
+      }
+      writer = null; // Boa prática
+    }
+    
+    System.out.println("Bye");
+	 	 
+	 }
+	 @Override
+  public int altera(Funcionario f){
+  	  
+  }
+  @Override
+  public int deletaById(int id){
+  	  
+  }
+  @Override
+  public int deleteByName(String name){
+  	  
+  	  
+  }
+  @Override
+  public Funcionario getById(int id){
+  	  
+  }
+  @Override
+  public Funcionario getByName(String name){
+  	  
+  }
+@Override
+  public Funcionario[] getAll(){
+  	  Cliente [] tmp = new Cliente[clientes.size()];
+	  	  for(int i = 0;i<clientes.size();i++){
+	  	  	  tmp[i] = (Cliente)clientes.get(i);
+	      }
+	      return tmp;
+  }
+  
+  
+
+	 
+  
+  // 1. Criar construtor padrão
+  
+  // 2. Implementar todos os métodos de IFuncionarioDAO
+  
+}

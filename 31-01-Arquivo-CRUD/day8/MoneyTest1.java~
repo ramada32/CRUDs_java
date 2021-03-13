@@ -1,0 +1,15 @@
+import java.util.Locale;
+import java.text.NumberFormat;
+
+public class MoneyTest1 {
+  
+  public static void main(String[] args) {
+    double salary = 1234.56789;
+    System.out.println("Salario sem formatacao: " + salary);
+    
+    Locale locale = new Locale("pt", "BR");      
+    NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+    System.out.println("Salario em Reais: " + currencyFormatter.format(salary));
+  }
+  
+}

@@ -1,0 +1,26 @@
+//P7 JAVA
+
+public class P7{
+
+
+          public static void main(String[]args){
+	           int i = 1;
+               int e = 2;
+       boolean result;
+k= ((i > e) && (1>2)){
+result = "maior";
+System.out.println("resusltado" + result);
+if((i< e )|| (1<2)){
+	 result = "menor";
+System.out.println("resusltado" + result);
+
+}
+else{
+		 result = "igual";
+	System.out.println("resusltado" + result);
+}
+
+
+}
+}
+}

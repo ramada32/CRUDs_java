@@ -1,0 +1,31 @@
+//switch calculadora
+
+
+public class Calculadora3{
+   public static void main(String[]args){
+   
+   
+   System.out.println("calculadora");
+   
+   
+   int x = Integer.parseInt(args[0]);
+   int y = Integer.parseInt(args[2]);
+   
+   
+   char op = args[1].charAt(0);
+   
+   
+   int resultado = 0;
+   switch(op){
+   
+   	case '+' :resultado = x + y;break;
+   	case '-' :resultado = x - y;break;
+   	case '*' :resultado = x * y;break;
+   	case '/' :resultado = x / y;break;
+   
+   
+   }
+   System.out.println("resultado = " + resultado);
+
+}
+}

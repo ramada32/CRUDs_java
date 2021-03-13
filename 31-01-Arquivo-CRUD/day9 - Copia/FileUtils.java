@@ -1,0 +1,64 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+
+public final class FileUtils {
+  
+  private FileUtils() {
+  }
+  
+  public static BufferedReader getReader(String filename) {
+    try {
+      return new BufferedReader(new FileReader(filename));
+    } catch(Exception ex) {
+      ex.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static BufferedWriter getWriter(String filename) {
+    try {
+      return new BufferedWriter(new FileWriter(filename));
+    } catch(Exception ex) {
+      ex.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static String readLine(BufferedReader reader) {
+    try {
+      return reader.readLine();
+    } catch(Exception ex) {
+      ex.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static void writeLine(BufferedWriter writer, String line) {
+    try {
+      writer.write(line);
+      writer.newLine();
+      writer.flush();
+    } catch(Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+  
+  public static void close(BufferedReader reader) {
+    try {
+      reader.close();
+    } catch(Exception ex) {
+    }
+    reader = null;
+  }
+
+  public static void close(BufferedWriter writer) {
+    try {
+      writer.close();
+    } catch(Exception ex) {
+    }
+    writer = null;
+  }
+  
+}

@@ -1,0 +1,51 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+
+
+
+
+public class Funcionario implements IFuncionarioDAO{
+
+   private final String DATABASE = "./DB.TXT";
+   private BufferedWriter writer = null;// grava
+   private BufferedReader reader = null;//le arquivo
+   
+  // 1 - criar construir padrao
+  public FuncionarioDAO(){
+  openDatabase();
+  }
+  private void openDatabase(){
+  
+  }
+  
+  private void closeDatabase(){
+  	  
+  }
+  
+  public int altera(){
+  }
+  
+  public int deletaId(){
+  	  
+  }
+  public int deletaNome(){
+  }
+  
+  public int insere(Funcionario f){
+  	  //gravar em banco de dados arquivo texto
+  	  return 0;
+  }
+  
+  
+  
+  
+
+
+
+
+
+
+
+}

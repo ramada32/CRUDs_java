@@ -1,0 +1,95 @@
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ClienteDAO implements IClienteDAO {
+  
+	   private ArrayList clientes = new ArrayList();
+  
+  
+   @Override
+      public int insere(Cliente cliente) {
+		  clientes.add(cliente);
+		  Collections.sort(clientes);
+		  return 1;
+      }
+  
+   @Override
+     public int altera(Cliente cliente) {
+		 for(int i=0; i < clientes.size(); i++) {
+			 Cliente item = (Cliente)clientes.get(i);
+				 if(item.getId() == cliente.getId()) {
+						item.setNome(cliente.getNome());
+						item.setDatas(cliente.getData());
+						Collections.sort(clientes);
+				        return 1;
+			     }
+		}
+	
+		  return 0;
+    }
+ 
+  @Override
+  	 public int deleta(int id) {
+		for(int i=0; i < clientes.size(); i++) {
+			Cliente item = (Cliente)clientes.get(i);
+				if(item.getId() == id) {
+					clientes.remove(i); 
+					return 1;
+				 }
+		
+		}
+		return 1;
+	 }
+	 
+   @Override
+   	  public int deleta(String nome) {
+		  for(int i=0; i < clientes.size(); i++) {
+			  Cliente item = (Cliente)clientes.get(i);
+				  if(item.getNome().equalsIgnoreCase(nome)) {
+					  clientes.remove(i); 
+					  return 1;
+		          }
+           }
+           return 1;
+      }
+  // indeof do id do cliente;
+  @Override
+     public int indexOf(int id) {
+		 for(int i=0; i < clientes.size(); i++) {
+			 if(((Cliente)clientes.get(i)).getId() == id) {
+			 	 return i;
+			  }
+         }
+         return -1;
+     }
+  // indeof do nome do cliente;
+  @Override
+     public int indexOf(String nome) {
+		 for(int i=0; i < clientes.size(); i++) {
+			 if(((Cliente)clientes.get(i)).getNome().equalsIgnoreCase(nome)) {
+			 	 return i;
+             }
+         }
+         return -1;
+    }
+  
+  @Override
+	  public Cliente get(int id) {
+		for(int i=0; i < clientes.size(); i++) {
+		  if(((Cliente)clientes.get(i)).getId() == id) {
+			return (Cliente)clientes.get(i);
+		  }
+		}
+        return null;
+      }
+  
+  @Override
+	  public Cliente[] list() {
+	  	  Cliente [] tmp = new Cliente[clientes.size()];
+	  	  for(int i = 0;i<clientes.size();i++){
+	  	  	  tmp[i] = (Cliente)clientes.get(i);
+	      }
+          return tmp;
+      }
+     }

@@ -1,0 +1,47 @@
+public class Principal{
+
+
+
+   public static void Menu(){
+   	   
+   	   do{
+   	   Scanner n1 = new Scanner(System.in);
+   say("----------------------------menu------------------------");
+   say("lista de clientes");
+   say(traces);
+   say("1- cadastrar cliente");
+   say("2- editar cliente");
+   say("3- deletar cliente pelo id");
+   say("4- deletar cliente pelo nome");
+   say("digite 0 para sair do sistema");
+   
+   int n = n1.nextInt();
+   
+   switch(n){
+   	   
+   	case 1:   break;
+   			case 2:   break;
+   					case 3:   break;
+   							case 4:   break;
+   								default :   say("fim de programa"); break;
+   								
+   		                  
+   	   
+   	   
+   }
+
+   }while(n != 0);
+
+       say("fim de programa");
+
+}
+
+    public static void main(String[]args){
+       Menu();
+      
+    
+    
+    
+    
+    }
+ }

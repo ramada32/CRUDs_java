@@ -1,0 +1,58 @@
+import java.util.Date;
+
+
+public class FuncionarioT{
+
+   private int id;
+   private String nome;
+   private Date data;
+   private double salario;
+   
+   
+   public void setSalario(double salario){
+   	this.salario = salario;   
+   }
+  public void  setDatas(Date data){
+  	  this.data = data;
+  }
+  public Date getData(){
+  	  return data;
+  }
+  public void setId(int id) {
+    if(id < 1) {
+      System.out.println("Id deve ser maior que zero");
+      System.exit(-1);
+    }
+    this.id = id;    
+  }
+  
+  // Getter para o id
+  public int getId() {
+    return id;
+  }
+  public int getSalario(){
+  	  return salario;
+  }
+  // Setter para nome
+  public void setNome(String nome) {
+    if(nome == null) {
+      System.out.println("Nome nao pode ser NULL");
+      System.exit(-1);
+    }
+    this.nome = nome;
+  }
+  
+  // Getter para nome
+  public String getNome() {
+    return nome;
+  } 
+   
+   
+   
+   
+
+
+
+
+
+}

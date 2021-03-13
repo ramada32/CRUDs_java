@@ -1,0 +1,20 @@
+//P10 java
+
+public class P10{
+
+  public static void main(String[]args){
+    
+    int i = 1;
+    int e = 10;
+    
+     do{
+     
+     System.out.println("valor impresso = " + i);
+     
+       i++;
+       
+     while(e>=i);
+
+     }
+  }
+}

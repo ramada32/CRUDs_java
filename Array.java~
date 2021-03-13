@@ -1,0 +1,22 @@
+//array
+import javax.swing.JOptionPane;
+import java.util.Scanner;
+
+public class Array{
+  
+   public static void main (String[]args){
+
+   	   Scanner n1 = new Scanner(System.in);
+   	   
+JOptionPane.showInputDialog("Qual é o seu nome? \n");
+String nome = n1.nextLine();
+JOptionPane.showInputDialog("qual seu endereco? \n");
+String res = n1.nextLine();
+JOptionPane.showInputDialog("numero residencial?");
+int numero = n1.nextInt();
+JOptionPane.showInputDialog("idade?");
+int idade = n1.nextInt();
+}
+JOptionPane.showMessageDialog(" nome do cliente = " +nome+ "\n endereco residencial = "+res+"\n numero residencial = "+numero+"idade = "+idade)
+
+}

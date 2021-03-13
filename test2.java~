@@ -1,0 +1,16 @@
+// test2
+
+public class test2{
+
+    public static void main(String[]args){
+    
+       int n=5;
+       int o=5;
+       int i,j;
+       double m[][] = new double[n][o];
+         for(i=0;i<n;n++)
+         	 System.out.println("linha = " +m[n][o]);
+         for(j=0;j<o;o++){
+         	 System.out.println("linha = " +m[n][o]);
+         }
+   }}

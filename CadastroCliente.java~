@@ -1,0 +1,171 @@
+
+import java.util.Scanner;
+
+/**
+* O Objetivo desta classe é demonstrar uma nova estrutura de desenvolvimento, 
+* na qual o algoritmo é dividido em métodos, facilitando a legibilidade e
+* manutenção, além de ser uma boa prática de desenvolvimento.
+*/
+public class CadastroCliente {
+  
+  // Constantes Globais da Classe 
+  // Observações:
+  // 1) Uso da palavra reservada 'private' indica que a constante só é visível nesta classe
+  // 2) Uso da palavra reservada 'static'. Se usar static no método, as variáveis e constantes também devem ser
+  // 3) Uso da palavra reservada 'final' que impede a alteração do conteúdo da variavel
+  // 4) Nome de constantes sao sempre MAIUSCULAS e SEPARADAS por '_' quando palavras compostas
+  private static final String SYSTEM_NAME = "Cadastro de Bancos";
+  private static final String SYSTEM_VERSION = "Versao 1.0";
+  private static final String SYSTEM_AUTHOR = "Fulano de Tal";
+  private static final String SYSTEM_DATE = "27/01/2019";
+  private static Scanner sc = new Scanner(System.in);
+ 
+  // Variáveis / Objetos Globais da Classe
+  // Observação: Nunca use 'final', pois variáveis podem ter o conteúdo alterado
+  private static String[] names = new String[0]; // Ou {}
+ 
+  // ------------------------------------------------------------------------
+  // Métodos
+  // Observações:
+  // 1) Por causa do método main ser 'static', todos os outros devem ser também
+  
+  // Método say() - Exibe uma string através do System.out (print ou println)
+  private static void say() {
+    say("", true);
+  }
+ 
+  // Método say(String) - sobrescrito, recebendo uma string
+  private static void say(String s) {
+    say(s, true);
+  }
+ 
+  // Método say(String, boolean) - sobrescrito, recebendo string e boolean
+  private static void say(String s, boolean newLine) {
+    if(newLine) {
+      System.out.println(s);
+    } else {
+      System.out.print(s);
+    }
+  }
+ 
+  // Método replicate(String, int) - cria uma string de caracteres repitidos
+  private static String replicate(String s, int times) {
+    StringBuilder sb = new StringBuilder();
+    for(int i=0; i < times; i++) {
+      sb.append(s);
+    }
+    return sb.toString();
+  }
+ 
+  // Método sort() - Classifica os nomes em ordem alfabetica
+  private static void sort() {
+    for(int i=0; i < names.length-1; i++) {
+      for(int j=i+1; j < names.length; j++) {
+        if(names[i].compareTo(names[j]) > 0) {
+          String tmp = names[i];
+          names[i] = names[j];
+          names[j] = tmp;
+        }
+      }
+    }
+  }
+ 
+  // Método listData() - Lista os Nomes de Bancos Cadastrados
+  private static void listData() {
+    if(names.length > 0) {
+      String title = "Lista de Dados";
+      say(title);
+      say(replicate("-", title.length()));
+      for(int i=0; i < names.length; i++) {
+        say(names[i]);
+      }
+      say(replicate("-", title.length()));
+    }
+  }
+ 
+  // Método insere() - Insere um Novo Nome de Banco
+  private static void insere() {
+    say("Insira o Nome de um Novo Banco: ", false);
+    String name = sc.nextLine();
+    if(name != null) {
+      boolean found = false;
+      for(int i=0; i < names.length; i++) {
+        if(names[i].equalsIgnoreCase(name)) {
+          found = true;
+          break;
+        }
+      }
+      if(!found) {
+        String[] tmp = new String[names.length+1];
+        for(int i=0; i < names.length; i++) {
+          tmp[i] = names[i];
+        }
+        tmp[tmp.length-1] = name;
+        names = tmp;
+        sort();
+      } else {
+        say("Erro: Banco '" + name + "' ja cadastrado!");
+      }
+    }
+  }
+
+  // Método altera() - Altera o Nome de um Banco
+  private static void altera() {
+  	  System.out.println("digite nome do cliente para alterar");
+  	  String nomes = sc.next();
+   for(int i = 0;i< names.length;i++){
+   	     if(names[i].equalsIgnoreCase(nomes)){
+      	  		   System.out.print("editar nome do cliente \n");
+      	  		   String nome = sc.next();
+      	  		    
+      	  	  	   	   names[i]=nome;
+      	  	  	   }
+   	   
+   	   
+   }
+  }
+ 
+  // Método remove()
+  private static void remove() {
+    say("Erro: Funcao 'remove' nao liberada!");
+  }
+ 
+  // Método showMenu() - Exibe o Menu
+  private static void showMenu() {
+    int option = Integer.MAX_VALUE;
+    do {
+      say();
+      say(replicate("-", 50));
+      say(SYSTEM_NAME + " - " + SYSTEM_VERSION);
+      say("Author: " + SYSTEM_AUTHOR + " - " + SYSTEM_DATE);
+      say(replicate("-", 50));
+      listData();
+      say("Menu");
+      say("-------------------------");
+      say("1 - Novo Nome do Banco");
+      say("2 - Altera Nome do Banco");
+      say("3 - Remove Nome do Banco");
+      say("0 - Sair");
+      say("-------------------------");
+      say("Digite a opcao: ", false);
+      option = sc.nextInt(); sc.nextLine(); // sc.nextLine() corrige bug
+      switch(option) {
+      case 1: insere(); break;
+      case 2: altera(); break;
+      case 3: remove(); break;
+      }
+    } while(option != 0);
+  }
+ 
+  // Método startSystem() - Inicia o Sistema
+  private static void startSystem() {
+    showMenu();
+  }
+ 
+  // Método main(String[]) - Ponto de início da Classe
+  public static void main(String[] args) {
+    startSystem();
+    say("Bye");
+  }
+
+}

@@ -1,0 +1,132 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.io.File;
+import java.util.Arrays;
+
+public class FuncionarioDAO implements IFuncionarioDAO {
+  private final String DATABASE = "./DB.TXT";
+  private BufferedReader reader = null;
+  private BufferedWriter writer = null;
+  
+  // 1. Criar construtor padrão
+  public FuncionarioDAO() {
+    openDatabase();
+  }
+  
+  private void openDatabase() {
+    reader = FileUtils.getReader(DATABASE);
+    writer = FileUtils.getWriter(DATABASE, true);
+  }
+  
+
+  
+  private void closeDatabase() {
+  FileUtils.close(writer);
+  FileUtils.close(reader);
+  }
+  
+  // 2. Implementar todos os métodos de IFuncionarioDAO
+  
+  public int inserir(Funcionario f) {
+    // Gravar em Banco de Dados (Arquivo Texto)
+    
+    // 1. Criar um looping de leitura
+    String line = null;
+    while((line = FileUtils.readLine(reader)) != null) {
+      String[] parts = line.split(";");
+      int id = Integer.parseInt(parts[0]);
+      
+      // 2. Verificar se o id já não existe
+      if(id == f.getId()) {
+        // 3. Se existir emitir ERRO e sair
+        Utils.sayError("Funcionario ja cadastrado!");
+        return 0; // Falha
+      }
+    }
+    
+    // 4. Se não existir, inserir
+    String record = "" + f.getId() + ";" + f.getNome() + ";" +
+                         Utils.toString(f.getAdmissao()) + ";" +
+                         f.getSalario();
+    FileUtils.writeLine(writer, record);
+    return 1; // Sucesso
+  }
+  
+  public int alterar(Funcionario f) {
+  	   
+  	   String record=null;
+  	   FuncionarioDAOTest1 dao = new FuncionarioDAOTest1();
+  	  ArrayList <Funcionario> fun = new ArrayList <>();
+    String line = null;
+    while((line = FileUtils.readLine(reader)) != null) {
+      String[] parts = line.split(";");
+      int id = Integer.parseInt(parts[0]);
+      // 2. Verificar se o id já não existe
+    
+      if(id == f.getId()) {  
+      	  
+        // 3. Se existir emitir ERRO e sair
+          record = f.getId() + ";" + f.getNome() + ";" +
+                         Utils.toString(f.getAdmissao()) + ";" +
+                         f.getSalario();
+         continue;
+      }
+    //  fun.add(linhaemfuncionario(parts));
+    	
+    fun.add(linhaemfuncionario(line));
+    }
+
+   for(int i=0;i<fun.size();i++){
+   	  
+   	   inserir(linhaemfuncionario(line));
+   	   
+   }
+   
+  // inserir(f);
+  /// return 0;
+   
+    //  Utils.sayError("Funcionario nao cadastrado!");
+        return 1; // Falha
+    // 4. Se não existir, inserir
+   }
+     // Sucesso
+  
+   public static Funcionario linhaemfuncionario(String line) {
+  	   Funcionario f = new Funcionario();
+  	   String[] fValues = line.split(";");
+  	   f.setId(Integer.parseInt(fValues[0]));
+  	   f.setNome(fValues[1]);
+  	   f.setAdmissao(Utils.toDate(fValues[2]));
+  	   f.setSalario(Double.parseDouble(fValues[3]));
+    return f;    
+  }
+  
+  
+  public int deletaById(int ids) {
+  	   
+  	  
+    return 0;    
+  }
+  
+  public int deleteByName(String name) {
+  	  
+  return 0;
+  }
+  
+  public Funcionario getById(int id) {
+    return null;
+  }
+  
+  public Funcionario getByName(String name) {
+    return null;
+  }
+  
+  public Funcionario[] getAll() {
+    Funcionario[] tmp = new Funcionario[0];
+    return tmp;
+  }
+
+}

@@ -1,0 +1,38 @@
+//Array 5
+import java.util.Scanner;
+
+public class Array5{
+
+   public static void main(String[]args){
+   
+      Scanner n1 = new Scanner(System.in);
+      int soma=0;
+      int i;
+      int op = 0;
+      for(op = 0;op<=0;){
+      if(op == 0 || op < 0){
+      System.out.println("digite quantidade de elementos");
+      op = n1.nextInt();
+      }
+      }
+      double num1[] = new double[op];
+        double menor = Double.MAX_VALUE;
+        double maior = Double.MIN_VALUE;
+      for (i=0;i<op;i++){
+      	  
+ 
+   System.out.println("digite um numero");
+   num1[i] = n1.nextDouble();
+  if (int i=0;i<num1.length;i++){
+  	  
+  	  
+  }
+     
+   	  
+   	 
+   }
+   System.out.println("fim MAIOR : " +maior+ "menor = " +menor+"soma = " +soma);
+   }
+}
+   
+   
